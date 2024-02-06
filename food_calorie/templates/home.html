@@ -14,7 +14,7 @@
 
 <body>
     <div class="container">
-        
+
 
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
@@ -32,9 +32,12 @@
                 <div class="alert alert-warning"> Oh no! something went wrong.Please try again in sometime. </div>
                 {% else %}
                 <h1> {{api.0.name | capfirst}} has a total of <strong> {{api.0.calories}} Calories</strong>
+                   {% if api.0.calories > 200 %}
                     <img src="{% static 'images/shocked.png' %}" class="img-responsive" />
+                {% endif%}
                 </h1>
 
+                 {% if api.0.sodium_mg > 1000 %}
                 <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
                     <div>
                         This food contains an high amount of sodium. High Sodium cuases Sever dehydration and water
@@ -42,6 +45,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             <div class="row justify-content-center mt-5 mb-5">
                 <div class="col-md-10 caloriescont shadow rounded">
                     <div class="row">
